@@ -133,6 +133,7 @@ function initBuilderData() {
     'angle':    productPhotoData.filter(i=>i.cat==='angles').map(libToChip),
     'style':    productPhotoData.filter(i=>i.cat==='styles').map(libToChip),
     'lighting': productPhotoData.filter(i=>i.cat==='lighting').map(libToChip),
+    'composition': productPhotoData.filter(i=>i.cat==='composition').map(libToChip),
     'advanced': productPhotoData.filter(i=>i.cat==='advanced').map(libToChip),
     'post':     productPhotoData.filter(i=>i.cat==='post').map(libToChip),
     'lens':     LENSES_DATA,
@@ -174,6 +175,7 @@ const CAT_ICONS = {
   'pp-lighting':   ICONS.sun,
   'pp-advanced':   ICONS.zap,
   'pp-post':       ICONS.monitor,
+  'pp-composition':ICONS.layers,
 };
 
 // ============================================================
@@ -475,6 +477,7 @@ const PB_TABS = [
   { key:'angle',    ar:'الزوايا',        en:'Angles'     },
   { key:'style',    ar:'الستايلات',      en:'Styles'     },
   { key:'lighting', ar:'الإضاءة',        en:'Lighting'   },
+  { key:'composition', ar:'التكوين',     en:'Composition'},
   { key:'advanced', ar:'تقنيات متقدمة',  en:'Advanced'   },
   { key:'post',     ar:'Post Production',en:'Post'       },
   { key:'lens',     ar:'العدسات',        en:'Lenses'     },
