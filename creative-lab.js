@@ -34,6 +34,10 @@ const clCtaBlock = () => `<div class="cl-cta-block">
   <div class="cl-cta-title">جرب دلوقتي</div>
   <p class="cl-cta-sub">خدت التوجيه الفني اللي محتاجه؟ ابدأ تنفّذ الفكرة على طول.</p>
   <div class="cl-cta-btns">
+    <a class="topbar-action" href="index.html?page=story">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      جاليو
+    </a>
     <a class="topbar-action" href="index.html?open=explore">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
       المكتبة

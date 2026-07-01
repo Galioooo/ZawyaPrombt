@@ -86,6 +86,7 @@ a{color:inherit;}
 .topbar-action.primary{background:var(--teal); color:#07070A; border-color:var(--teal); font-weight:700;}
 .topbar-action.primary:hover{background:var(--teal-l); color:#07070A;}
 @media (max-width:700px){ .topbar-title{display:none;} .topbar-progress{display:none;} }
+@media (max-width:480px){ .topbar-right .full-label{display:none;} .topbar-right .topbar-action{padding:8px 10px;} .topbar-right{gap:8px;} }
 
 .mobile-tabs{display:none;}
 
@@ -347,6 +348,10 @@ ol.steps li{margin-bottom:6px;}
   </div>
   <div class="topbar-right">
     <div class="topbar-progress" id="topProgress">Section 1 of 15 — Overview</div>
+    <a class="topbar-action" href="index.html?page=story">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span class="full-label">جاليو</span>
+    </a>
     <a class="topbar-action" href="index.html?open=explore">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
       <span class="full-label">المكتبة</span>
