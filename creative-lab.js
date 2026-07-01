@@ -197,6 +197,17 @@ function renderBigIdea(){
 // ---------- Techniques ----------
 const escAttr = s => (s||'').toString().replace(/"/g,'&quot;');
 
+const FI = {
+  explain: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+  meaning: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.5.4.8 1 .8 1.6V17h6.4v-.7c0-.6.3-1.2.8-1.6A7 7 0 0 0 12 2z"/></svg>',
+  when: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
+  example: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>',
+  why: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+  search: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+  tag: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41L11 3.83V3H3v8l.83.83L13.41 20.6a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83z"/><circle cx="7.5" cy="7.5" r="1" fill="currentColor"/></svg>',
+  notice: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>'
+};
+
 function techniqueCardHTML(t){
   const open = clState.techExpanded.has(t.id);
   const idx = CL_TECHNIQUES.findIndex(x=>x.id===t.id) + 1;
@@ -216,20 +227,20 @@ function techniqueCardHTML(t){
     </div>
     <div class="tech-body">
       <div class="tech-body-inner">
-        <div class="tech-field"><div class="tech-field-label">الشرح</div><div class="tech-field-body">${t.explanation}</div></div>
-        <div class="tech-field"><div class="tech-field-label">What it means</div><div class="tech-field-body">${t.meaning}</div></div>
-        <div class="tech-field"><div class="tech-field-label">إمتى تستخدمها</div><div class="tech-field-body"><ul class="plain">${t.when.map(w=>`<li>${w}</li>`).join('')}</ul></div></div>
-        <div class="tech-field"><div class="tech-field-label">مثال</div><div class="tech-field-body">${t.example}</div></div>
-        <div class="tech-field"><div class="tech-field-label">ليه بتشتغل</div><div class="tech-field-body">${t.why}</div></div>
+        <div class="tech-field"><div class="tech-field-label">${FI.explain}الشرح</div><div class="tech-field-body tf-lead">${t.explanation}</div></div>
+        <div class="tech-field"><div class="tech-field-label">${FI.meaning}What it means</div><div class="tech-field-body tf-definition">${t.meaning}</div></div>
+        <div class="tech-field"><div class="tech-field-label">${FI.when}إمتى تستخدمها</div><div class="tech-field-body"><ul class="plain">${t.when.map(w=>`<li>${w}</li>`).join('')}</ul></div></div>
+        <div class="tech-field"><div class="tech-field-label">${FI.example}مثال</div><div class="tech-field-body tf-example">${t.example}</div></div>
+        <div class="tech-field"><div class="tech-field-label">${FI.why}ليه بتشتغل</div><div class="tech-field-body tf-why">${t.why}</div></div>
         <div class="tech-field">
-          <div class="tech-field-label">Search examples <button class="copy-all-btn" data-copyall="examples" data-tech="${t.id}" title="انسخ كل الأمثلة">نسخ الكل</button></div>
+          <div class="tech-field-label">${FI.search}Search examples <button class="copy-all-btn" data-copyall="examples" data-tech="${t.id}" title="انسخ كل الأمثلة">نسخ الكل</button></div>
           <div class="tech-field-body"><div class="tag-row">${t.searchExamples.map(s=>`<span class="tag" data-copy-text="${escAttr(s)}" title="اضغط للنسخ">${s}</span>`).join('')}</div></div>
         </div>
         <div class="tech-field">
-          <div class="tech-field-label">Search keywords <button class="copy-all-btn" data-copyall="keywords" data-tech="${t.id}" title="انسخ كل الكلمات">نسخ الكل</button></div>
+          <div class="tech-field-label">${FI.tag}Search keywords <button class="copy-all-btn" data-copyall="keywords" data-tech="${t.id}" title="انسخ كل الكلمات">نسخ الكل</button></div>
           <div class="tech-field-body"><div class="tag-row">${t.searchKeywords.map(s=>`<span class="tag kw" data-copy-text="${escAttr(s)}" title="اضغط للنسخ">${s}</span>`).join('')}</div></div>
         </div>
-        <div class="tech-field" style="margin-bottom:0"><div class="tech-field-label">What to notice</div><div class="tech-field-body"><div class="notice-line">${t.notice}</div></div></div>
+        <div class="tech-field" style="margin-bottom:0"><div class="tech-field-label">${FI.notice}What to notice</div><div class="tech-field-body"><div class="notice-line">${t.notice}</div></div></div>
       </div>
     </div>
   </div>`;

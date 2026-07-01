@@ -1048,6 +1048,9 @@ function initLanding() {
   document.getElementById('navExplore')?.addEventListener('click', openExploreModal);
   document.getElementById('navStory')?.addEventListener('click', () => navigateTo('story'));
 
+  // Mobile: compact always-visible Gallery button (Creative Lab is a plain <a>, needs no JS)
+  document.getElementById('navGalleryMobile')?.addEventListener('click', () => navigateTo('story'));
+
   // Bottom CTA text → scroll to builder cards
   document.getElementById('bottomCta')?.addEventListener('click', scrollToBuilder);
 

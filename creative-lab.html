@@ -242,17 +242,35 @@ ol.steps li{margin-bottom:6px;}
 .tech-card.open .tech-body{max-height:2600px;}
 .tech-body-inner{padding:2px 18px 20px;}
 .tech-field{margin-bottom:15px;}
-.tech-field-label{font-size:.7rem; color:var(--fam); margin-bottom:5px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; display:flex; align-items:center; gap:6px;}
+.tech-field-label{font-size:.7rem; color:var(--fam); margin-bottom:6px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; display:flex; align-items:center; gap:6px;}
+.tech-field-label svg{flex-shrink:0;}
 .tech-field-label .copy-all-btn{margin-inline-start:auto; display:flex; align-items:center; gap:4px; font-size:.62rem; color:var(--muted2); background:none; border:1px solid var(--border); padding:2px 8px; border-radius:100px; cursor:pointer; text-transform:none; letter-spacing:0; font-weight:400; font-family:inherit; transition:.15s;}
 .tech-field-label .copy-all-btn:hover{color:var(--text); border-color:var(--border-hi);}
 .tech-field-body{font-size:.86rem; color:var(--muted); line-height:1.8;}
-.tech-field-body ul.plain li{border-inline-start:2px solid var(--fam); padding-inline-start:10px;}
+.tech-field-body ul.plain li{border-inline-start:2px solid var(--fam); padding-inline-start:10px; background:color-mix(in srgb, var(--fam) 7%, var(--surface));}
+
+/* Colorful, distinct treatment per field type — content untouched, only presentation */
+.tf-lead{color:var(--text); font-size:.9rem;}
+.tf-definition{
+  background:color-mix(in srgb, var(--indigo) 10%, transparent); border-inline-start:3px solid var(--indigo-l);
+  border-radius:8px; padding:11px 15px; color:var(--text);
+}
+.tf-example{
+  background:linear-gradient(135deg, color-mix(in srgb, var(--warn) 12%, transparent), transparent);
+  border:1px dashed color-mix(in srgb, var(--warn) 45%, transparent); border-radius:10px; padding:12px 16px; color:var(--text);
+}
+.tf-why{
+  background:color-mix(in srgb, var(--fam) 10%, transparent); border-inline-start:3px solid var(--fam);
+  border-radius:8px; padding:11px 15px; color:var(--text);
+}
 .tag-row{display:flex; flex-wrap:wrap; gap:6px;}
 .tag-row .tag{
-  background:rgba(255,255,255,.05); border:1px solid var(--border); border-radius:100px; padding:5px 12px;
+  background:color-mix(in srgb, var(--fam,var(--teal)) 9%, rgba(255,255,255,.04));
+  border:1px solid color-mix(in srgb, var(--fam,var(--teal)) 25%, var(--border));
+  border-radius:100px; padding:5px 12px;
   font-size:.76rem; color:var(--muted); cursor:pointer; transition:.15s; display:inline-flex; align-items:center; gap:5px;
 }
-.tag-row .tag:hover{background:color-mix(in srgb, var(--fam,var(--teal)) 16%, transparent); border-color:var(--fam,var(--teal)); color:var(--text);}
+.tag-row .tag:hover{background:color-mix(in srgb, var(--fam,var(--teal)) 18%, transparent); border-color:var(--fam,var(--teal)); color:var(--text);}
 .tag-row .tag.kw{background:var(--indigo-glow); border-color:rgba(99,102,241,.3); color:var(--indigo-l); font-family:'Barlow Condensed',sans-serif;}
 .tag-row .tag.kw:hover{background:color-mix(in srgb, var(--indigo) 22%, transparent);}
 .tag-row .tag.copied{background:var(--teal); border-color:var(--teal); color:#07070A;}
