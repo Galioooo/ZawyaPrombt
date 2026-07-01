@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>زاوية — تسجيل الدخول</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="admin.css"/>
+</head>
+<body class="login-body">
+
+  <div class="login-wrap">
+    <div class="login-card">
+
+      <div class="login-brand">
+        <img src="../images/logo-small.png" alt="زاوية" onerror="this.style.display='none'"/>
+        <span class="login-brand-text">زاوية</span>
+      </div>
+
+      <h1 class="login-title">Admin Dashboard</h1>
+      <p class="login-sub">تسجيل دخول المشرف</p>
+
+      <form class="login-form" id="loginForm">
+        <div class="field-group">
+          <label class="field-label">البريد الإلكتروني</label>
+          <input type="email" id="emailInput" class="field-input" placeholder="admin@zawya.com" required autocomplete="email"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label">كلمة المرور</label>
+          <input type="password" id="passInput" class="field-input" placeholder="••••••••" required autocomplete="current-password"/>
+        </div>
+        <div class="login-error" id="loginError"></div>
+        <button type="submit" class="btn-login" id="loginBtn">
+          <span id="loginBtnText">دخول</span>
+          <span class="btn-spinner hidden" id="loginSpinner"></span>
+        </button>
+      </form>
+
+      <a href="../index.html" class="login-back">← العودة للموقع</a>
+    </div>
+  </div>
+
+  <script src="supabase-config.js"></script>
+  <script>
+    // Redirect if already logged in
+    (async () => {
+      const { data: { session } } = await window._supabase.auth.getSession();
+      if (session) window.location.href = 'index.html';
+    })();
+
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value.trim();
+      const pass  = document.getElementById('passInput').value;
+      const btn   = document.getElementById('loginBtn');
+      const txt   = document.getElementById('loginBtnText');
+      const spin  = document.getElementById('loginSpinner');
+      const err   = document.getElementById('loginError');
+
+      err.textContent = '';
+      btn.disabled = true;
+      txt.textContent = 'جاري الدخول…';
+      spin.classList.remove('hidden');
+
+      const { data, error } = await window._supabase.auth.signInWithPassword({ email, password: pass });
+
+      if (error) {
+        err.textContent = 'بيانات خاطئة. تحقق من الإيميل وكلمة المرور.';
+        btn.disabled = false;
+        txt.textContent = 'دخول';
+        spin.classList.add('hidden');
+        return;
+      }
+
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>
